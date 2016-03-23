@@ -1,13 +1,13 @@
 # Add configuration and scripts for adding a device to a domain
 class domain_join (
-  $domain_fqdn,                       # FQDN of the domain, example: example.com
-  $domain_shortname,                  # Short name/alias of the domain, example: example
-  $ad_dns,                            # Array of DNS servers for the domain, example: ['1.2.3.4', '5.6.7.8']
-  $register_account,                  # Account for registering with the domain, example: Administrator
-  $register_password,                 # Password for the registration domain, example: password
-  $additional_search_domains = undef, # List of additional domains to search in resolv.conf, example: subdomain.example.com
-  $manage_services = true,            # Whether or not the services are managed
-  $manage_resolver = true,            # Whether or not the resolver configuration is managed
+  String                  $domain_fqdn,                       # FQDN of the domain, example: example.com
+  String                  $domain_shortname,                  # Short name/alias of the domain, example: example
+  Array[String]           $ad_dns,                            # Array of DNS servers for the domain, example: ['1.2.3.4', '5.6.7.8']
+  String                  $register_account,                  # Account for registering with the domain, example: Administrator
+  String                  $register_password,                 # Password for the registration domain, example: password
+  Optional[Array[String]] $additional_search_domains = undef, # List of additional domains to search in resolv.conf, example: subdomain.example.com
+  Boolean                 $manage_services = true,            # Whether or not the services are managed
+  Boolean                 $manage_resolver = true,            # Whether or not the resolver configuration is managed
 ) {
   $service_packages = [
     'oddjob-mkhomedir',
